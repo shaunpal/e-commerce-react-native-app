@@ -1,21 +1,64 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { LogBox } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './components/Home';
+import UserProfile from './components/Profile';
+import Categories from './components/Categories';
+import CategoryItem from './components/CategoryItem';
+import { ItemProvider } from './contexts/ItemContext';
+import Cart from './components/ShoppingCart';
+
+
+const Stack = createStackNavigator();
 
 export default function App() {
+  LogBox.ignoreAllLogs();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ItemProvider>
+      <NavigationContainer>
+          <Stack.Navigator>
+              <Stack.Screen
+              options={{headerShown: false}}
+              name="Shop"
+              component={Home}
+              />
+              <Stack.Screen
+              name="Profile"
+              component={UserProfile}
+              />
+              <Stack.Screen
+              name="Categories"
+              component={Categories}
+              />
+              <Stack.Screen
+              options={{headerShown: false}}
+              name="Books"
+              component={CategoryItem}
+              />
+              <Stack.Screen
+              options={{headerShown: false}}
+              name="Electronics"
+              component={CategoryItem}
+              />
+              <Stack.Screen
+              options={{headerShown: false}}
+              name="Shoes"
+              component={CategoryItem}
+              />
+              <Stack.Screen
+              options={{headerShown: false}}
+              name="Clothing"
+              component={CategoryItem}
+              />
+              <Stack.Screen
+              name="Cart"
+              component={Cart}
+              />
+
+          </Stack.Navigator>
+      </NavigationContainer>
+    </ItemProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
