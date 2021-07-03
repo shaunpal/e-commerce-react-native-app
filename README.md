@@ -34,6 +34,6 @@ Interactive E-Commerce Mobile App using React Native with Expo, for cross-platfo
 
 ## Preview
 
-> Note: [Expo client](https://expo.io/) required  to view app, install in [App Store]() or [Google Play Store]()
+> Note: [Expo client](https://expo.io/) required  to view app, install in [App Store]() or [Google Play Store]() and create a free expo account
 
 View Mobile application, go to [E-commerce App](https://expo.io/@shaunpal/ShoppingAppNative)
