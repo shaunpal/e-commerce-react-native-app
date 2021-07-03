@@ -1,12 +1,12 @@
-import React, {useRef, useState, useContext, useEffect} from 'react';
-import { StyleSheet, Text, Button, View, SafeAreaView, Image, TextInput, Dimensions, ScrollView, TouchableHighlight, Alert } from 'react-native';
+import React, { useState, useContext, useEffect} from 'react';
+import { StyleSheet, Text, Button, View, SafeAreaView, Image, Dimensions, ScrollView, TouchableHighlight, Alert } from 'react-native';
 import { ItemContext } from '../contexts/ItemContext';
 import CartHeader from './CartHeader';
 import { AntDesign } from '@expo/vector-icons';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height
-
+export var cartlen = 1;
 
 const Cart = () => {
 
@@ -29,7 +29,7 @@ const Cart = () => {
     }
 
     useEffect(() => {
-        
+        cartlen = cart.length;
     }, [cart, remove]);  
 
     return (
@@ -106,7 +106,6 @@ const Cart = () => {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
@@ -171,15 +170,16 @@ const styles = StyleSheet.create({
         zIndex: 1
     },
     scrollcontainer: {
+        width: screenWidth,
         flexGrow: 1,
         position: "relative",
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'flex-start',
         flexDirection: "column",
-        width: screenWidth,
-        top: 60,
-        overflow: "scroll"
+        overflow: "scroll",
+        top: screenHeight/15,
+        height: screenHeight+(cartlen*screenHeight),
     },
     scrollcontainerempty: {
         position: "relative",

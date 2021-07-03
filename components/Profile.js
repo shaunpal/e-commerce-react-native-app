@@ -1,10 +1,15 @@
 import React, {useRef, useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import PhoneInput from 'react-native-phone-number-input';
 import { FloatingLabelInput } from 'react-native-floating-label-input'
  
+
+const screenHeight = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
+
 const UserProfile = () => {
+    
     const [fullname, setFullname] = useState("Bob Bobby");
     const [editname, setEditname] = useState(false);
 
@@ -33,7 +38,7 @@ const UserProfile = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={{ flexDirection: "column", justifyContent: "flex-start", height: "100%", top: 20, alignItems: "center" }}> 
+            <ScrollView contentContainerStyle={{ flexDirection: "column", justifyContent: "flex-start", height: screenHeight, top: 20, alignItems: "center", width: screenWidth }}> 
                 <View style={{ justifyContent: "center", alignItems: "center", marginBottom: 30 }}>
                     <Image 
                         style={{ width: 100, height: 100, borderRadius: 50 }}
@@ -180,7 +185,7 @@ const UserProfile = () => {
                         </View>
                     }
                 </View>
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }
@@ -218,18 +223,15 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        left: -20,
-        top: 10,
-        marginBottom: 20,
-        marginTop: 20
     },
     invalidemailinput: {
         borderColor: "red"
     },
     textinputlayout: {
-        padding: 35, 
-        flex: 0.8,
-        width: 400, 
+        paddingLeft: 35, 
+        paddingRight: 35,
+        width: screenWidth,
+        height: screenHeight/6, 
         backgroundColor: '#fff', 
         flexDirection: "row", 
         justifyContent: "center", 

@@ -4,6 +4,8 @@ import { View, Text, StyleSheet, Dimensions, Image, SafeAreaView } from "react-n
 export const SLIDER_WIDTH = Dimensions.get('window').width + 80
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7)
 
+const screenWidth = Dimensions.get('window').width;
+
 const CarouselCardItem = ({ item, index }) => {
   return (
     <SafeAreaView style={styles.container} key={index}>
@@ -54,7 +56,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingTop: 20,
     textAlign: "center",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    width: screenWidth-100
   },
   bodyinfo: {
     flexDirection: "row",

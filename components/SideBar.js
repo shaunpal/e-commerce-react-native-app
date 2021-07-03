@@ -1,7 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Image, Text } from 'react-native';
-import { Ionicons, Foundation, FontAwesome5,EvilIcons } from '@expo/vector-icons';
+import { StyleSheet, View, SafeAreaView, Image, Text, Dimensions } from 'react-native';
+import { Ionicons, Foundation, FontAwesome5 } from '@expo/vector-icons';
+
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 const SideBar = ({isOpenMenu, navigation}) => {
     
@@ -43,12 +45,12 @@ const styles = StyleSheet.create({
         zIndex: 1,
         left: 0,
         position: "absolute",
-        top: 100
+        top: screenHeight/9,
     },
     sidebarmenu: {
         backgroundColor: "white",
         height: "100%",
-        width: 300,
+        width: (screenWidth/3)*2,
         shadowColor: "#000",
         left: 0,
         shadowOffset: {

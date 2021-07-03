@@ -9,13 +9,15 @@ import { Feather, AntDesign, EvilIcons } from '@expo/vector-icons';
 import SideBar from './SideBar';
 import { useRoute } from '@react-navigation/native';
 import {ItemContext} from './../contexts/ItemContext';
+import { ScreenHeight } from 'react-native-elements/dist/helpers';
 
-const screenHeight = Dimensions.get('window').height
+const screenHeight = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
 
 const images = [
-  { loc: "file://assets/pics/front screen/discover items.png"},
-  { loc: "file://assets/pics/front screen/discover shopping bags2.jpeg"},
-  { loc: "file://assets/pics/front screen/summer-sale.png" }
+  { loc: "https://raw.githubusercontent.com/shaunpal/e-commerce-react-native-app/main/assets/pics/front%20screen/discover%20items.png"},
+  { loc: "https://raw.githubusercontent.com/shaunpal/e-commerce-react-native-app/main/assets/pics/front%20screen/discover%20shopping%20bags2.jpeg"},
+  { loc: "https://raw.githubusercontent.com/shaunpal/e-commerce-react-native-app/main/assets/pics/front%20screen/summer-sale.png" }
 ]
 
  const Home = ({navigation}) => {
@@ -59,7 +61,7 @@ const images = [
             <View style={styles.subheader}>
                 <Text style={styles.subheadertext}>Newest &amp; Bestsellers</Text>
             </View>
-            <View style={styles.carousel}>
+            <View style={styles.carouselcontainer}>
                 <Carousel style={styles.carousel}
                     layout={'default'}
                     data={items.books}
@@ -75,19 +77,19 @@ const images = [
             <View style={styles.flashbannerview}>
                 <Image 
                 style={styles.flashbanner} 
-                source={ { uri: "file://assets/pics/front screen/flash-sale.gif" } }
+                source={ { uri: "https://raw.githubusercontent.com/shaunpal/e-commerce-react-native-app/main/assets/pics/front%20screen/flash-sale.gif" } }
                 />
             </View>
-            <View style={{flexDirection: "row", justifyContent: "center", alignItems: "center", marginTop: -50}}>
+            <View style={{flexDirection: "row", justifyContent: "center", alignItems: "center", width: screenWidth, height: screenHeight/6, top: 20 }}>
                 <View>
                     <Image 
-                        style={{ width: 140, height: 140, borderRadius: 8 }}
-                        source={ { uri: "file://assets/pics/front screen/shoe-promo.gif" } }/>
+                        style={{ width: screenWidth/3, height: screenWidth/3, borderRadius: 8 }}
+                        source={ { uri: "https://raw.githubusercontent.com/shaunpal/e-commerce-react-native-app/main/assets/pics/front%20screen/shoe-promo.gif" } }/>
                 </View>
                 <View>
                     <Image 
-                        style={{ width: 250, height: 140, marginLeft: 5, borderRadius: 10 }}
-                        source={ { uri: "file://assets/pics/front screen/app-idea-animated-1.gif" } }/>
+                        style={{ width: screenWidth/2, height: screenWidth/3, marginLeft: 5, borderRadius: 10 }}
+                        source={ { uri: "https://raw.githubusercontent.com/shaunpal/e-commerce-react-native-app/main/assets/pics/front%20screen/app-idea-animated-1.gif" } }/>
                 </View>
             </View>
         <StatusBar style="auto" />
@@ -105,9 +107,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   slider: {
-    width: 430,
-    height: 280,
-    flex: 1,
+    width: screenWidth,
+    height: screenHeight/3,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -122,24 +123,25 @@ const styles = StyleSheet.create({
   },
   flashbanner: {
       borderRadius: 10,
-      width: 405,
-      height: 90,
-      
+      width: screenWidth-40,
+      height: ScreenHeight/10
   },
   flashbannerview: {
-    flex: 0.8,
-    top: 10,
-  },
+    width: screenWidth,
+    alignItems: "center", 
+    justifyContent: "center",
+    height: ScreenHeight/8 
+},
   imageslider: {
     flexDirection: "column", 
     alignItems: "center", 
-    justifyContent: "center", 
-    flex: 1.1,
+    justifyContent: "center",
+    height: screenHeight/3 
   },
   subheader: {
-      flex: 0.3,
+      height: ScreenHeight/12,
       top: 20,
-      width: "100%"
+      width: screenWidth
   },
   subheadertext : {
     fontSize: 20,
@@ -147,15 +149,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   carousel: {
-      flex: 1.4
+    flex: 1,
   },
+  carouselcontainer: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: "column",
+    height: screenHeight/2
+},
   scrollview: {
-      height: screenHeight,
+      height: screenHeight+200,
       flexGrow: 1,
       position: "relative",
       backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       flexDirection: "column",
       overflow: "scroll"
   }

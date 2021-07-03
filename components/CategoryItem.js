@@ -12,9 +12,6 @@ const screenWidth = Dimensions.get('window').width;
 const CategoryItem = ({navigation}) => {
     const [openMenu, setOpenMenu] = useState(false);
 
-    const [isPhotoZoom, setIsPhotoZoom] = useState(true);
-    const [imgitem, setImgitem] = useState(null);
-
     const getSideMenu = (openMenu) => {
         setOpenMenu(openMenu);
     }
@@ -32,7 +29,6 @@ const CategoryItem = ({navigation}) => {
     const addItem = (item) => {
         item.qty = 1
         item.total = item.price
-        // console.log(cart.filter(it => it.id === item.id))
         setCart([...cart, item])
     }
 
@@ -62,6 +58,7 @@ const CategoryItem = ({navigation}) => {
                     <Image 
                         style={item.category === "Books" ? styles.bookview : styles.itemview} 
                         source={{ uri: item.src }}
+                        resizeMode={'contain'}
                     />
                     <Text style={{ paddingTop: 5, paddingBottom: 5 }}>Category: {item.category}</Text>
                     <Text style={{ fontWeight: "bold" }}>{item.description}</Text>

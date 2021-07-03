@@ -1,11 +1,5 @@
-import React, {useRef, useState, useContext, useEffect} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Dimensions } from 'react-native';
-import { ItemContext } from '../contexts/ItemContext';
-
-const screenHeight = Dimensions.get('window').heigth;
-const screenWidth = Dimensions.get('window').width
-
-
+import React, { useEffect} from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 const CartHeader = ({cart}) => {
 
